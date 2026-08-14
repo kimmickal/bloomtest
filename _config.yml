@@ -1,7 +1,7 @@
 title: Bloom
 description: Food shared. Community strengthened in Kobe, Japan.
 url: "https://kimmickal.github.io"
-baseurl: "/Bloom"
+baseurl: "/bloomtest"
 lang: en
 markdown: kramdown
 permalink: /news/:year/:month/:day/:title/
