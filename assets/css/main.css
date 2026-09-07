@@ -123,28 +123,3 @@ body::after{
   }
   .notice-section::after,.tinted::after{font-size:36px}
 }
-
-
-/* Restored blossom layout: preserve original large flowers, remove stacked duplicates */
-.hero::after,.page-hero::after,.section:not(.tinted)::after{display:none!important}
-
-/* A few extra blossoms, deliberately spaced away from the original pair */
-body::after{
-  display:block;
-  z-index:0;
-  opacity:.46;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Cg fill=%27%23ffe1e7%27 stroke=%27%23f6c2cc%27 stroke-width=%273%27 opacity=%27.9%27%3E%3Cpath d=%27M92 24c7-13 21-17 30-9 5 5 5 16-1 24-7 9-18 12-27 6-10 5-21 2-28-6-6-8-6-19-1-24 9-8 23-4 30 9z%27/%3E%3Cpath d=%27M118 61c14-4 26 3 26 13 0 7-7 14-17 16-11 2-21-2-26-12-10-4-15-14-12-24 2-10 13-14 29-8z%27/%3E%3Cpath d=%27M105 107c4 15-3 27-14 27-8 0-15-7-17-17-2-12 2-21 12-26 4-10 14-15 24-12 10 2 14 13 8 28z%27/%3E%3Cpath d=%27M66 96c-14 4-26-3-26-13 0-7 7-14 17-16 11-2 21 2 26 12 10 4 15 14 12 24-2 10-13 14-29 8z%27/%3E%3Cpath d=%27M79 51c-4-15 3-27 14-27 8 0 15 7 17 17 2 12-2 21-12 26-4 10-14 15-24 12-10-2-14-13-8-28z%27/%3E%3Ccircle cx=%2792%27 cy=%2792%27 r=%278%27 fill=%27%23fff4b8%27 stroke=%27%23f1dda0%27/%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Cg fill=%27%23ffd7de%27 stroke=%27%23f3bac6%27 stroke-width=%273%27 opacity=%27.86%27%3E%3Cpath d=%27M92 24c7-13 21-17 30-9 5 5 5 16-1 24-7 9-18 12-27 6-10 5-21 2-28-6-6-8-6-19-1-24 9-8 23-4 30 9z%27/%3E%3Cpath d=%27M118 61c14-4 26 3 26 13 0 7-7 14-17 16-11 2-21-2-26-12-10-4-15-14-12-24 2-10 13-14 29-8z%27/%3E%3Cpath d=%27M105 107c4 15-3 27-14 27-8 0-15-7-17-17-2-12 2-21 12-26 4-10 14-15 24-12 10 2 14 13 8 28z%27/%3E%3Cpath d=%27M66 96c-14 4-26-3-26-13 0-7 7-14 17-16 11-2 21 2 26 12 10 4 15 14 12 24-2 10-13 14-29 8z%27/%3E%3Cpath d=%27M79 51c-4-15 3-27 14-27 8 0 15 7 17 17 2 12-2 21-12 26-4 10-14 15-24 12-10-2-14-13-8-28z%27/%3E%3Ccircle cx=%2792%27 cy=%2792%27 r=%278%27 fill=%27%23fff4b8%27 stroke=%27%23f1dda0%27/%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Cg fill=%27%23ffe9ed%27 stroke=%27%23f6cfd7%27 stroke-width=%273%27 opacity=%27.88%27%3E%3Cpath d=%27M92 24c7-13 21-17 30-9 5 5 5 16-1 24-7 9-18 12-27 6-10 5-21 2-28-6-6-8-6-19-1-24 9-8 23-4 30 9z%27/%3E%3Cpath d=%27M118 61c14-4 26 3 26 13 0 7-7 14-17 16-11 2-21-2-26-12-10-4-15-14-12-24 2-10 13-14 29-8z%27/%3E%3Cpath d=%27M105 107c4 15-3 27-14 27-8 0-15-7-17-17-2-12 2-21 12-26 4-10 14-15 24-12 10 2 14 13 8 28z%27/%3E%3Cpath d=%27M66 96c-14 4-26-3-26-13 0-7 7-14 17-16 11-2 21 2 26 12 10 4 15 14 12 24-2 10-13 14-29 8z%27/%3E%3Cpath d=%27M79 51c-4-15 3-27 14-27 8 0 15 7 17 17 2 12-2 21-12 26-4 10-14 15-24 12-10-2-14-13-8-28z%27/%3E%3Ccircle cx=%2792%27 cy=%2792%27 r=%278%27 fill=%27%23fff4b8%27 stroke=%27%23f1dda0%27/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-size:125px 125px,105px 105px,115px 115px;
-  background-position:left 5% top 820px,right 5% top 1320px,left 7% top 1780px;
-}
-@media(max-width:700px){
-  body::after{
-    opacity:.38;
-    background-size:95px 95px,82px 82px,88px 88px;
-    background-position:left -18px top 820px,right -16px top 1260px,left -14px top 1680px;
-  }
-}
