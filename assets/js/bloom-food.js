@@ -74,12 +74,19 @@
     const allListings = [...local, ...samples];
     let map;
     let markerLayer;
+    let markerById = new Map();
 
     if (window.L && document.getElementById('food-map')) {
-      map = L.map('food-map', { scrollWheelZoom: false }).setView([34.695, 135.205], 12);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      map = L.map('food-map', {
+        scrollWheelZoom: false,
+        zoomControl: false,
+        tap: true
+      }).setView([34.695, 135.205], 12);
+      L.control.zoom({ position: 'topright' }).addTo(map);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
+        subdomains: 'abcd',
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
       }).addTo(map);
       markerLayer = L.layerGroup().addTo(map);
     }
@@ -97,13 +104,16 @@
 
       count.textContent = `${filtered.length} listing${filtered.length === 1 ? '' : 's'}`;
       empty.hidden = filtered.length !== 0;
-      root.innerHTML = filtered.map(item => `
-        <article class="food-card">
+      root.innerHTML = filtered.map((item, index) => `
+        <article class="food-card" data-listing-id="${escapeHtml(item.id)}" tabindex="0" aria-label="Show ${escapeHtml(item.title)} on the map">
           <div class="food-card-top">
-            <div>
-              <div class="listing-meta"><span>${escapeHtml(item.type)}</span><span>${escapeHtml(item.area)}</span>${item.sample ? '<span>Demo</span>' : '<span>Your listing</span>'}</div>
-              <h3>${escapeHtml(item.title)}</h3>
-              <p class="provider-name">${escapeHtml(item.provider)}</p>
+            <div class="food-card-heading">
+              <span class="map-number" aria-hidden="true">${index + 1}</span>
+              <div>
+                <div class="listing-meta"><span>${escapeHtml(item.type)}</span><span>${escapeHtml(item.area)}</span>${item.sample ? '<span>Demo</span>' : '<span>Your listing</span>'}</div>
+                <h3>${escapeHtml(item.title)}</h3>
+                <p class="provider-name">${escapeHtml(item.provider)}</p>
+              </div>
             </div>
             <span class="availability-dot" aria-hidden="true"></span>
           </div>
@@ -113,15 +123,56 @@
             <div><dt>Instructions</dt><dd>${escapeHtml(item.contact)}</dd></div>
           </dl>
           ${item.notes ? `<p class="listing-notes">${escapeHtml(item.notes)}</p>` : ''}
+          <p class="map-focus-hint">Select this card to show pickup area on map</p>
         </article>`).join('');
 
       if (markerLayer) {
         markerLayer.clearLayers();
-        filtered.forEach(item => {
+        markerById = new Map();
+        const bounds = [];
+        filtered.forEach((item, index) => {
           const coords = (Number.isFinite(item.lat) && Number.isFinite(item.lng)) ? [item.lat, item.lng] : areaCoordinates(item.area);
-          L.marker(coords).bindPopup(`<strong>${escapeHtml(item.title)}</strong><br>${escapeHtml(item.place)}<br><small>Approximate pickup area</small>`).addTo(markerLayer);
+          const markerIcon = L.divIcon({
+            className: 'bloom-map-marker-wrap',
+            html: `<span class="bloom-map-marker">${index + 1}</span>`,
+            iconSize: [38, 38],
+            iconAnchor: [19, 19],
+            popupAnchor: [0, -22]
+          });
+          const marker = L.marker(coords, { icon: markerIcon })
+            .bindPopup(`<div class="bloom-popup"><strong>${escapeHtml(item.title)}</strong><br><span>${escapeHtml(item.provider)}</span><br><b>Pickup:</b> ${escapeHtml(item.place)}<br><small>Approximate public pickup area</small></div>`)
+            .addTo(markerLayer);
+          markerById.set(item.id, marker);
+          bounds.push(coords);
         });
+
+        if (bounds.length > 1) {
+          map.fitBounds(bounds, { padding: [44, 44], maxZoom: 13 });
+        } else if (bounds.length === 1) {
+          map.setView(bounds[0], 13);
+        } else {
+          map.setView([34.695, 135.205], 12);
+        }
       }
+
+      root.querySelectorAll('.food-card').forEach(card => {
+        const focusMarker = () => {
+          const marker = markerById.get(card.dataset.listingId);
+          if (!marker || !map) return;
+          const coords = marker.getLatLng();
+          map.setView(coords, Math.max(map.getZoom(), 14), { animate: true });
+          marker.openPopup();
+          card.classList.add('map-selected');
+          root.querySelectorAll('.food-card').forEach(other => { if (other !== card) other.classList.remove('map-selected'); });
+        };
+        card.addEventListener('click', focusMarker);
+        card.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            focusMarker();
+          }
+        });
+      });
     }
 
     [search, area, type].forEach(control => control.addEventListener('input', render));

@@ -53,6 +53,7 @@ wide: true
     <p class="eyebrow">Pickup areas</p>
     <h2 id="map-heading">Kobe map</h2>
     <p class="muted">Markers show approximate public pickup areas, not private home addresses.</p>
+    <p class="map-help"><strong>Tip:</strong> Marker numbers match the food cards. Select a card to zoom to its pickup area.</p>
     <div id="food-map" class="food-map" aria-label="Interactive map of example food pickup locations in Kobe"></div>
     <noscript><p class="info-box">Enable JavaScript to use the interactive map and listing filters.</p></noscript>
   </aside>
