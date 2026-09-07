@@ -87,39 +87,27 @@ body::before{
 }
 
 
-/* More cherry blossom decorations */
-body::after{
-  z-index:0;
-  opacity:.52;
+/* FINAL: exactly two cherry blossoms total */
+body::before{
+  content:"" !important;
+  position:fixed !important;
+  inset:0 !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+  opacity:.62 !important;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Cg fill=%27%23ffd7de%27 stroke=%27%23f6c2cc%27 stroke-width=%273%27 opacity=%27.92%27%3E%3Cpath d=%27M92 24c7-13 21-17 30-9 5 5 5 16-1 24-7 9-18 12-27 6-10 5-21 2-28-6-6-8-6-19-1-24 9-8 23-4 30 9z%27/%3E%3Cpath d=%27M118 61c14-4 26 3 26 13 0 7-7 14-17 16-11 2-21-2-26-12-10-4-15-14-12-24 2-10 13-14 29-8z%27/%3E%3Cpath d=%27M105 107c4 15-3 27-14 27-8 0-15-7-17-17-2-12 2-21 12-26 4-10 14-15 24-12 10 2 14 13 8 28z%27/%3E%3Cpath d=%27M66 96c-14 4-26-3-26-13 0-7 7-14 17-16 11-2 21 2 26 12 10 4 15 14 12 24-2 10-13 14-29 8z%27/%3E%3Cpath d=%27M79 51c-4-15 3-27 14-27 8 0 15 7 17 17 2 12-2 21-12 26-4 10-14 15-24 12-10-2-14-13-8-28z%27/%3E%3Ccircle cx=%2792%27 cy=%2792%27 r=%278%27 fill=%27%23fff7ba%27 stroke=%27%23f1dda0%27/%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Cg fill=%27%23ffe6eb%27 stroke=%27%23f6cfd7%27 stroke-width=%273%27 opacity=%27.9%27%3E%3Cpath d=%27M92 24c7-13 21-17 30-9 5 5 5 16-1 24-7 9-18 12-27 6-10 5-21 2-28-6-6-8-6-19-1-24 9-8 23-4 30 9z%27/%3E%3Cpath d=%27M118 61c14-4 26 3 26 13 0 7-7 14-17 16-11 2-21-2-26-12-10-4-15-14-12-24 2-10 13-14 29-8z%27/%3E%3Cpath d=%27M105 107c4 15-3 27-14 27-8 0-15-7-17-17-2-12 2-21 12-26 4-10 14-15 24-12 10 2 14 13 8 28z%27/%3E%3Cpath d=%27M66 96c-14 4-26-3-26-13 0-7 7-14 17-16 11-2 21 2 26 12 10 4 15 14 12 24-2 10-13 14-29 8z%27/%3E%3Cpath d=%27M79 51c-4-15 3-27 14-27 8 0 15 7 17 17 2 12-2 21-12 26-4 10-14 15-24 12-10-2-14-13-8-28z%27/%3E%3Ccircle cx=%2792%27 cy=%2792%27 r=%278%27 fill=%27%23fff7ba%27 stroke=%27%23f1dda0%27/%3E%3C/g%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Cg fill=%27%23ffdbe2%27 stroke=%27%23f4c2cc%27 stroke-width=%273%27 opacity=%27.88%27%3E%3Cpath d=%27M92 24c7-13 21-17 30-9 5 5 5 16-1 24-7 9-18 12-27 6-10 5-21 2-28-6-6-8-6-19-1-24 9-8 23-4 30 9z%27/%3E%3Cpath d=%27M118 61c14-4 26 3 26 13 0 7-7 14-17 16-11 2-21-2-26-12-10-4-15-14-12-24 2-10 13-14 29-8z%27/%3E%3Cpath d=%27M105 107c4 15-3 27-14 27-8 0-15-7-17-17-2-12 2-21 12-26 4-10 14-15 24-12 10 2 14 13 8 28z%27/%3E%3Cpath d=%27M66 96c-14 4-26-3-26-13 0-7 7-14 17-16 11-2 21 2 26 12 10 4 15 14 12 24-2 10-13 14-29 8z%27/%3E%3Cpath d=%27M79 51c-4-15 3-27 14-27 8 0 15 7 17 17 2 12-2 21-12 26-4 10-14 15-24 12-10-2-14-13-8-28z%27/%3E%3Ccircle cx=%2792%27 cy=%2792%27 r=%278%27 fill=%27%23fff7ba%27 stroke=%27%23f1dda0%27/%3E%3C/g%3E%3C/svg%3E"),
-    radial-gradient(circle at 12% 18%,rgba(255,255,255,.9) 0 28px,transparent 29px),
-    radial-gradient(circle at 88% 12%,rgba(255,255,255,.85) 0 22px,transparent 23px),
-    radial-gradient(circle at 84% 76%,rgba(255,255,255,.72) 0 20px,transparent 21px);
-  background-repeat:no-repeat;
-  background-size:150px 150px,130px 130px,120px 120px,320px 320px,240px 240px,260px 260px;
-  background-position:left 5% top 170px,right 6% top 420px,left 9% bottom 210px,left -120px top 120px,right -80px top 210px,right 60px bottom 100px;
+    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Cg fill=%27%23ffd7de%27 stroke=%27%23f3b8c4%27 stroke-width=%273%27%3E%3Cpath d=%27M90 18c12 0 22 18 22 35 16-8 36-4 41 7 6 13-9 29-26 35 14 12 20 31 11 41-9 11-30 4-43-9-9 16-26 27-39 20-13-7-12-29-3-45-18-3-34-16-32-30 2-14 22-21 40-18 2-19 13-36 29-36z%27/%3E%3Ccircle cx=%2790%27 cy=%2790%27 r=%2713%27 fill=%27%23fff2a8%27 stroke=%27%23efd996%27/%3E%3Ccircle cx=%2790%27 cy=%2790%27 r=%275%27 fill=%27%23dfa0ae%27 stroke=%27none%27/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Cg fill=%27%23ffe3e9%27 stroke=%27%23f3bec8%27 stroke-width=%273%27%3E%3Cpath d=%27M90 18c12 0 22 18 22 35 16-8 36-4 41 7 6 13-9 29-26 35 14 12 20 31 11 41-9 11-30 4-43-9-9 16-26 27-39 20-13-7-12-29-3-45-18-3-34-16-32-30 2-14 22-21 40-18 2-19 13-36 29-36z%27/%3E%3Ccircle cx=%2790%27 cy=%2790%27 r=%2713%27 fill=%27%23fff4b8%27 stroke=%27%23efdca1%27/%3E%3Ccircle cx=%2790%27 cy=%2790%27 r=%275%27 fill=%27%23dfa8b4%27 stroke=%27none%27/%3E%3C/g%3E%3C/svg%3E") !important;
+  background-repeat:no-repeat,no-repeat !important;
+  background-size:260px 260px,220px 220px !important;
+  background-position:right -45px top 115px,left -55px top 610px !important;
 }
-.notice-section,.site-footer,.section,.hero,.page-hero{position:relative}
-.notice-section::after,.site-footer::before,.tinted::after{
-  content:"✿";
-  position:absolute;
-  pointer-events:none;
-  line-height:1;
-  color:#efa6b7;
-  opacity:.38;
-  z-index:0;
-}
-.notice-section::after{right:40px;top:-8px;font-size:52px;transform:rotate(18deg)}
-.tinted::after{right:clamp(12px,3vw,42px);bottom:20px;font-size:56px;transform:rotate(-12deg)}
-.site-footer::before{left:26px;top:18px;font-size:46px;opacity:.28;transform:rotate(-10deg)}
-.notice-section > *, .section > *, .hero > *, .page-hero > *, .site-footer > *{position:relative;z-index:1}
+body::after{content:none !important;background:none !important;display:none !important}
+.hero::after,.page-hero::after,.section::after,.section:not(.tinted)::after,.tinted::after,.notice-section::after,.site-footer::before{content:none !important;background:none !important;display:none !important}
 @media(max-width:700px){
-  body::after{
-    background-size:110px 110px,100px 100px,94px 94px,220px 220px,170px 170px,200px 200px;
-    background-position:left -8px top 150px,right -18px top 470px,left -10px bottom 230px,left -120px top 120px,right -80px top 210px,right 40px bottom 100px;
+  body::before{
+    opacity:.50 !important;
+    background-size:205px 205px,175px 175px !important;
+    background-position:right -70px top 150px,left -65px top 650px !important;
   }
-  .notice-section::after,.tinted::after{font-size:36px}
 }
