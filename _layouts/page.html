@@ -2,14 +2,14 @@
 layout: default
 ---
 <section class="page-hero">
-  <div class="container narrow">
+  <div class="container {% unless page.wide %}narrow{% endunless %}">
     <p class="eyebrow">{{ page.eyebrow | default: "Bloom Kobe" }}</p>
     <h1>{{ page.title }}</h1>
     {% if page.intro %}<p class="lead">{{ page.intro }}</p>{% endif %}
   </div>
 </section>
 <section class="section">
-  <div class="container narrow prose">
+  <div class="container {% unless page.wide %}narrow{% endunless %} prose">
     {{ content }}
   </div>
 </section>
